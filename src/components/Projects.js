@@ -1,34 +1,26 @@
 import React from 'react';
 
-const Projects = () => {
+function Projects() {
+  const projectList = [
+    { name: 'Project 1', description: 'A description of project 1.' },
+    { name: 'Project 2', description: 'A description of project 2.' },
+  ];
+
   return (
-    <section id="projects" className="p-8 bg-gray-800">
-      <h2 className="text-4xl font-bold text-white mb-8">&lt;projects&gt;</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-gray-700 p-4 rounded-lg">
-          <div className="w-full h-48 bg-gray-600 rounded-lg mb-4 flex items-center justify-center">
-            <p className="text-gray-400">[Project Image Placeholder]</p>
-          </div>
-          <h3 className="text-xl font-semibold text-white">Mobile Shop</h3>
-          <p className="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div className="bg-gray-700 p-4 rounded-lg">
-          <div className="w-full h-48 bg-gray-600 rounded-lg mb-4 flex items-center justify-center">
-            <p className="text-gray-400">[Project Image Placeholder]</p>
-          </div>
-          <h3 className="text-xl font-semibold text-white">Express API</h3>
-          <p className="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div className="bg-gray-700 p-4 rounded-lg">
-          <div className="w-full h-48 bg-gray-600 rounded-lg mb-4 flex items-center justify-center">
-            <p className="text-gray-400">[Project Image Placeholder]</p>
-          </div>
-          <h3 className="text-xl font-semibold text-white">Community</h3>
-          <p className="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <section id="work" className="py-16 bg-gray-900 text-white px-10">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-semibold text-teal-400">Projects</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+          {projectList.map((project, index) => (
+            <div key={index} className="bg-gray-800 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-teal-400">{project.name}</h3>
+              <p className="mt-2 text-gray-400">{project.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
-};
+}
 
 export default Projects;

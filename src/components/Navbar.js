@@ -1,30 +1,27 @@
 import React from 'react';
 
-const Navbar = () => {
-  const handleNavigation = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+function Navbar() {
   return (
-    <nav className="flex justify-between items-center p-4 bg-gray-900 text-white">
-      <div className="text-xl font-bold text-teal-400">BRDG Developer</div>
-      <div className="space-x-6 text-sm">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <button onClick={() => handleNavigation('hero')} className="hover:text-teal-400">Home</button>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <button onClick={() => handleNavigation('about')} className="hover:text-teal-400">About</button>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <button onClick={() => handleNavigation('projects')} className="hover:text-teal-400">Projects</button>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <button onClick={() => handleNavigation('clients')} className="hover:text-teal-400">Clients</button>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <button onClick={() => handleNavigation('contact')} className="hover:text-teal-400">Contact</button>
+    <nav className="fixed top-0 left-16 right-0 bg-gray-900 text-white z-50 py-4 px-6 flex justify-end items-center border-b border-gray-700">
+      <div className="space-x-6">
+        {['About', 'Experience', 'Work', 'Contact'].map((item, index) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            className="text-gray-400 hover:text-teal-400 transition-colors"
+          >
+            {`0${index + 1}. ${item}`}
+          </a>
+        ))}
+        <a
+          href="#resume"
+          className="ml-6 px-4 py-2 border border-teal-400 text-teal-400 rounded hover:bg-teal-400 hover:text-gray-900 transition-colors"
+        >
+          Resume
+        </a>
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;
