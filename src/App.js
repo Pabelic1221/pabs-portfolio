@@ -8,6 +8,7 @@ import Clients from './components/Clients';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SocialSidebar from './components/SocialSidebar';
+import EmailSidebar from './components/EmailSidebar'; // 👈 Import EmailSidebar
 
 function App() {
   return React.createElement(
@@ -15,6 +16,7 @@ function App() {
     { className: 'bg-navy text-white min-h-screen relative' },
     // Sticky Social Sidebar (Lower Left)
     React.createElement(SocialSidebar),
+
     // Main Content
     React.createElement(
       'div',
@@ -28,12 +30,7 @@ function App() {
       React.createElement(Contact),
       React.createElement(Footer)
     ),
-    // Vertical Name on Right
-    React.createElement(
-      'div',
-      { className: 'fixed right-0 top-1/2 transform -translate-y-1/2 writing-mode-vertical-rl text-slate text-xs rotate-180 origin-center' },
-      'brittanychiang.com'
-    )
+    React.createElement(EmailSidebar), // 👈 Add EmailSidebar
   );
 }
 
