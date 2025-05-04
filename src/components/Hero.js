@@ -8,7 +8,7 @@ function Hero() {
         <h1 className="text-5xl font-bold text-white mt-2">Jushua Pabelic.</h1>
         <h2 className="text-5xl font-bold text-gray-400 mt-2">I build things for the web.</h2>
         <p className="text-gray-400 text-base mt-6">
-          I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products at Upstatement.
+          I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, currently an Intern in Apollotech.
         </p>
         <a
           href="#work"

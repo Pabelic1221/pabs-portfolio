@@ -16,6 +16,7 @@ function App() {
     { className: 'bg-navy text-white min-h-screen relative' },
     // Sticky Social Sidebar (Lower Left)
     React.createElement(SocialSidebar),
+    React.createElement(EmailSidebar),
 
     // Main Content
     React.createElement(
@@ -30,7 +31,7 @@ function App() {
       React.createElement(Contact),
       React.createElement(Footer)
     ),
-    React.createElement(EmailSidebar), // 👈 Add EmailSidebar
+    
   );
 }
 

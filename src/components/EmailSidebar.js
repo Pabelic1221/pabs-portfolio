@@ -2,16 +2,18 @@ import React from 'react';
 
 function EmailSidebar() {
   return (
-    <div className="fixed bottom-0 right-10 h-auto flex flex-col items-center justify-end py-6 px-2 bg-navy z-50">
-      <div className="mb-6 transform rotate-90 origin-bottom">
-        <a
-          href="mailto:yourname@example.com"
-          className="text-slate hover:text-green transition-colors text-sm tracking-widest"
-        >
-          yourname@example.com
-        </a>
+    <div className="fixed bottom-0 right-10 h-auto flex items-center justify-end bg-navy z-50">
+      <div className="flex items-center transform rotate-90 origin-bottom-right">
+        <div className="mr-6">
+          <a
+            href="mailto:pabelicjush@gmail.com"
+            className="text-slate hover:text-green transition-colors text-sm tracking-widest"
+          >
+            pabelicjush@gmail.com
+          </a>
+        </div>
+        <div className="w-24 h-px bg-lightest-slate"></div>
       </div>
-      <div className="w-px h-24 bg-lightest-slate"></div>
     </div>
   );
 }
