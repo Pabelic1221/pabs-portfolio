@@ -2,7 +2,7 @@ import React from 'react';
 
 function Hero() {
   return (
-    <section className="min-h-screen bg-gray-900 text-white flex items-center justify-center px-10">
+    <section className="min-h-screen text-white flex items-center justify-center px-10">
       <div className="max-w-3xl">
         <p className="text-teal-400 text-base">Hi, my name is</p>
         <h1 className="text-5xl font-bold text-white mt-2">Brittany Chiang.</h1>

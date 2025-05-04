@@ -2,7 +2,7 @@ import React from 'react';
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-16 right-0 bg-gray-900 text-white z-50 py-4 px-6 flex justify-end items-center border-b border-gray-700">
+    <nav className="fixed top-0 left-16 right-0 text-white z-50 py-4 px-6 flex justify-end items-center border-b border-gray-700">
       <div className="space-x-6">
         {['About', 'Experience', 'Work', 'Contact'].map((item, index) => (
           <a

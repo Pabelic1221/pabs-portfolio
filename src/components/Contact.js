@@ -2,7 +2,7 @@ import React from 'react';
 
 function Contact() {
   return (
-    <section id="contact" className="py-16 bg-gray-900 text-white px-10">
+    <section id="contact" className="py-16 text-white px-10">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-semibold text-teal-400">Contact Me</h2>
         <p className="mt-4 text-gray-400 text-base">
@@ -25,7 +25,7 @@ function Contact() {
           />
           <button
             type="button"
-            className="px-6 py-2 bg-teal-400 text-gray-900 rounded-lg hover:bg-teal-500 transition-colors"
+            className="px-6 py-2 bg-teal-400 rounded-lg hover:bg-teal-500 transition-colors"
           >
             Send Message
           </button>

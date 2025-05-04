@@ -2,7 +2,7 @@ import React from 'react';
 
 function SocialSidebar() {
   return (
-    <div className="fixed bottom-0 left-0 h-auto flex flex-col items-center justify-end py-6 px-2 bg-navy border-r border-lightest-navy z-50">
+    <div className="fixed bottom-0 left-0 h-auto flex flex-col items-center justify-end py-6 px-2 bg-navy z-50">
       <div className="flex flex-col space-y-6 mb-6">
         <a href="https://example.com/chat" className="text-slate hover:text-green transition-colors"><span className="text-xl">💬</span></a>
         <a href="https://example.com/photos" className="text-slate hover:text-green transition-colors"><span className="text-xl">📷</span></a>
