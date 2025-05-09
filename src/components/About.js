@@ -11,14 +11,14 @@ function About() {
 
   return (
     <section id="about" className="py-16 bg-navy text-white">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-3xl font-semibold text-green mb-8">
           <span className="text-green mr-2">01.</span> About Me
         </h2>
 
         {/* Unified content container with margins */}
         <div className="mx-4 md:mx-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {/* Left Column: Text Content */}
             <div
               className="space-y-4"
@@ -46,14 +46,14 @@ function About() {
               </ul>
             </div>
 
-            {/* Right Column: Square Image Placeholder */}
+            {/* Right Column: Larger Square Image Placeholder */}
             <div
               className="relative"
               data-aos="fade-left"
               data-aos-delay="200"
             >
-              <div className="w-60 h-60 bg-light-navy rounded-lg flex items-center justify-center border-2 border-green mx-auto">
-                <span className="text-slate text-sm text-center">
+              <div className="w-80 h-80 bg-light-navy rounded-lg flex items-center justify-center border-2 border-green mx-auto">
+                <span className="text-slate text-xs text-center">
                   Image Placeholder
                   <br />
                   (Replace with actual image)
