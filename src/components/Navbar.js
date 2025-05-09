@@ -16,7 +16,11 @@ function Navbar() {
   }, [prevScrollPos]);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 text-white z-50 py-4 px-6 flex justify-end items-center bg-navy shadow-lg transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 flex justify-end items-center text-white backdrop-blur-md bg-navy/60 shadow-lg transition-transform duration-300 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <div className="space-x-6">
         {['About', 'Experience', 'Work', 'Contact'].map((item, index) => (
           <a
