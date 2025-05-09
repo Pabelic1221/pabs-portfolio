@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SocialSidebar from './components/SocialSidebar';
 import EmailSidebar from './components/EmailSidebar';
+import Achieves from './components/Awards';
 
 function App() {
   useEffect(() => {

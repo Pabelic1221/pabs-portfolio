@@ -2,35 +2,24 @@ import React from 'react';
 
 function Contact() {
   return (
-    <section id="contact" className="py-16 text-white px-10">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold text-teal-400">Contact Me</h2>
-        <p className="mt-4 text-gray-400 text-base">
-          Feel free to reach out to me for collaborations or just to chat!
-        </p>
-        <div className="mt-6 space-y-4">
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="w-full p-4 bg-gray-800 text-white rounded-lg"
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="w-full p-4 bg-gray-800 text-white rounded-lg"
-          />
-          <textarea
-            placeholder="Your Message"
-            className="w-full p-4 bg-gray-800 text-white rounded-lg h-32"
-          />
-          <button
-            type="button"
-            className="px-6 py-2 bg-teal-400 rounded-lg hover:bg-teal-500 transition-colors"
-          >
-            Send Message
-          </button>
-        </div>
-      </div>
+    <section
+      id="contact"
+      className="py-32 px-6 text-center text-light-slate"
+    >
+      <p className="text-green text-sm font-mono mb-4">04. What’s Next?</p>
+      <h2 className="text-4xl font-bold text-lightest-slate mb-6">
+        Get In Touch
+      </h2>
+      <p className="mb-12 max-w-xl mx-auto text-base text-slate-400 leading-relaxed">
+        Although I’m not currently looking for any new opportunities, my inbox is always open.
+        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+      </p>
+      <a
+        href="mailto:youremail@example.com"
+        className="inline-block border border-green text-green px-6 py-3 rounded-md font-mono text-sm hover:bg-green hover:bg-opacity-10 transition"
+      >
+        Say Hello
+      </a>
     </section>
   );
 }
