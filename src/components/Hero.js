@@ -17,14 +17,6 @@ function Hero() {
           I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences.
           Currently, I’m focused on building accessibility as an Intern at Apollotech.
         </p>
-        <a
-          href="#work"
-          className="mt-8 inline-block px-6 py-3 border border-green text-green rounded hover:bg-green hover:text-navy transition-colors"
-          data-aos="fade-up"
-          data-aos-delay="500"
-        >
-          Check out my course!
-        </a>
       </div>
     </section>
   );
