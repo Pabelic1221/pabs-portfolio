@@ -13,6 +13,7 @@ module.exports = {
         'lightest-slate': '#ccd6f6',
         white: '#e6f1ff',
         green: '#64ffda',
+        pink: '#f687b3',  // Add your pink color here
       },
       animation: {
         float: 'float 3s ease-in-out infinite',

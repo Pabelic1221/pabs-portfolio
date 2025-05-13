@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaGithub } from 'rea
 
 function SocialSidebar() {
   return (
-    <div className="fixed bottom-0 left-10 h-auto flex flex-col items-center justify-end py-6 px-2 bg-navy z-50">
+    <div className="fixed bottom-0 left-10 h-auto flex flex-col items-center justify-end py-6 px-2 z-50">
       <div className="flex flex-col space-y-6 mb-6">
         <a 
           href="https://www.facebook.com/pabelicjush1221" 

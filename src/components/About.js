@@ -10,10 +10,11 @@ function About() {
   ];
 
   return (
-    <section id="about" className="py-16 bg-navy text-white">
+    <section id="about" className="py-16 bg-background text-foreground">
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-3xl font-semibold text-green mb-8">
-          <span className="text-green mr-2">01.</span> About Me
+        <h2 className="text-3xl font-semibold text-green dark:text-pink-400 mb-8">
+          <span className="text-green dark:text-pink-400 mr-2">01.</span>
+          About Me
         </h2>
 
         {/* Unified content container with margins */}
