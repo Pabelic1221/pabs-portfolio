@@ -60,7 +60,7 @@ function Projects() {
   }, []);
 
   return (
-    <section id="work" className="py-20 px-6 bg-dark-navy text-white">
+    <section id="projects" className="py-20 px-6 bg-dark-navy text-white">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-lightest-slate mb-3">Other Noteworthy Projects</h2>
         <p className="text-center text-green text-sm mb-12 cursor-pointer hover:underline">view the archive</p>

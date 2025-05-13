@@ -11,7 +11,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SocialSidebar from './components/SocialSidebar';
 import EmailSidebar from './components/EmailSidebar';
-import Achieves from './components/Awards';
 
 function App() {
   useEffect(() => {
@@ -29,12 +28,12 @@ function App() {
     // Main content
     React.createElement(
       'div',
-      { className: 'ml-16' },
+      { className: 'ml-16 mr-16' },
       React.createElement(Navbar),
       React.createElement(Hero),
       React.createElement(About),
-      React.createElement(Projects),
       React.createElement(Awards),
+      React.createElement(Projects),
       React.createElement(Contact),
       React.createElement(Footer)
     )

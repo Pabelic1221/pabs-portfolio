@@ -20,7 +20,7 @@ const awards = [
 
 function Awards() {
   return (
-    <section className="py-20 px-6 sm:px-12 text-white" id="awards">
+    <section className="py-20 px-6 sm:px-12 text-white" id="achievements">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-green text-lg font-mono mb-4">03. Notable Achievements</h2>
         <div className="space-y-20">

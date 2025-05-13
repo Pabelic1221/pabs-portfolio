@@ -15,3 +15,8 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Enable smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
