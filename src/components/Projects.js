@@ -4,7 +4,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { motion } from 'framer-motion';
 
-function Projects() {
+function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
   const projectList = [
     {
       title: 'Integrating Algolia Search with WordPress Multisite',
@@ -60,39 +60,69 @@ function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-20 px-6 bg-dark-navy text-white">
+    <section id="projects" className={`py-20 px-6 ${isDarkMode ? 'bg-dark-navy' : 'bg-gray-50'}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-lightest-slate mb-3">Other Noteworthy Projects</h2>
-        <p className="text-center text-green text-sm mb-12 cursor-pointer hover:underline">view the archive</p>
+        <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-3 ${
+          isDarkMode ? 'text-lightest-slate' : 'text-gray-900'
+        }`}>
+          Other Noteworthy Projects
+        </h2>
+        <p className={`text-center ${accentColor} text-sm mb-12 cursor-pointer hover:underline`}>
+          view the archive
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projectList.map((project, index) => (
             <motion.div
               key={index}
               data-aos="fade-up" // AOS animation effect
-              className="bg-light-navy p-6 rounded-md shadow-md transform transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg flex flex-col justify-between"
+              className={`p-6 rounded-md shadow-md transform transition-all duration-300 ease-in-out hover:-translate-y-2 ${
+                isDarkMode 
+                  ? 'bg-light-navy hover:shadow-lg hover:shadow-navy/50' 
+                  : 'bg-white hover:shadow-lg hover:shadow-pink-100/50'
+              }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ opacity: { duration: 1 } }} // Duration of fade-in
             >
               <div className="flex items-center justify-between mb-4">
-                <FaFolderOpen className="text-green text-2xl" />
+                <FaFolderOpen className={accentColor + ' text-2xl'} />
                 <div className="flex space-x-4">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-green transition-colors">
+                  <a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={`${isDarkMode ? 'text-slate' : 'text-gray-400'} ${hoverAccentColor} transition-colors`}
+                  >
                     <FaGithub />
                   </a>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-green transition-colors">
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={`${isDarkMode ? 'text-slate' : 'text-gray-400'} ${hoverAccentColor} transition-colors`}
+                  >
                     <FaExternalLinkAlt />
                   </a>
                 </div>
               </div>
 
-              <h3 className="text-lg font-semibold text-lightest-slate mb-2">{project.title}</h3>
-              <p className="text-sm text-slate mb-4">{project.description}</p>
+              <h3 className={`text-lg font-semibold mb-2 group-hover:${accentColor} ${
+                isDarkMode ? 'text-lightest-slate' : 'text-gray-900'
+              }`}>
+                {project.title}
+              </h3>
+              <p className={`text-sm mb-4 ${
+                isDarkMode ? 'text-slate' : 'text-gray-600'
+              }`}>
+                {project.description}
+              </p>
 
-              <ul className="flex flex-wrap gap-2 mt-auto text-xs text-slate">
+              <ul className="flex flex-wrap gap-2 mt-auto text-xs">
                 {project.tech.map((tech, i) => (
-                  <li key={i}>{tech}</li>
+                  <li key={i} className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor}`}>
+                    {tech}
+                  </li>
                 ))}
               </ul>
             </motion.div>

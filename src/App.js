@@ -13,22 +13,31 @@ import SocialSidebar from './components/SocialSidebar';
 import EmailSidebar from './components/EmailSidebar';
 
 function App() {
-  // Set default theme to dark mode
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    // Initialize AOS for components that still use it
+    AOS.init({ 
+      duration: 800, 
+      once: true,
+      disable: 'mobile' 
+    });
 
-    // Check for saved theme in localStorage and default to dark mode if none exists
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setIsDarkMode(savedTheme === 'dark');
     } else {
-      // No theme saved, default to dark mode
       localStorage.setItem('theme', 'dark');
     }
+  }, []);
 
-    // Apply theme to body on load
+  useEffect(() => {
+    // Apply theme classes with transition
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    document.documentElement.classList.toggle('light', !isDarkMode);
+    
+    // Update body classes with transition
+    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
     if (isDarkMode) {
       document.body.classList.add('bg-navy', 'text-white');
       document.body.classList.remove('bg-white', 'text-black');
@@ -41,38 +50,30 @@ function App() {
   const toggleTheme = () => {
     const newTheme = !isDarkMode ? 'dark' : 'light';
     setIsDarkMode(!isDarkMode);
-    localStorage.setItem('theme', newTheme); // Save theme in localStorage
-
-    // Apply theme to body
-    if (newTheme === 'dark') {
-      document.body.classList.add('bg-navy', 'text-white');
-      document.body.classList.remove('bg-white', 'text-black');
-    } else {
-      document.body.classList.add('bg-white', 'text-black');
-      document.body.classList.remove('bg-navy', 'text-white');
-    }
+    localStorage.setItem('theme', newTheme);
   };
 
-  return React.createElement(
-    'div',
-    { className: 'min-h-screen relative' },
+  const commonProps = {
+    isDarkMode,
+    accentColor: isDarkMode ? 'text-green' : 'text-pink-400',
+    hoverAccentColor: isDarkMode ? 'hover:text-green' : 'hover:text-pink-500',
+  };
 
-    // Sticky Sidebars
-    React.createElement(SocialSidebar),
-    React.createElement(EmailSidebar),
-
-    // Main content
-    React.createElement(
-      'div',
-      { className: 'ml-16 mr-16' },
-      React.createElement(Navbar, { toggleTheme }),  // Pass the toggleTheme to Navbar
-      React.createElement(Hero),
-      React.createElement(About),
-      React.createElement(Awards),
-      React.createElement(Projects),
-      React.createElement(Contact),
-      React.createElement(Footer)
-    )
+  return (
+    <div className="min-h-screen relative transition-colors duration-300">
+      <SocialSidebar {...commonProps} />
+      <EmailSidebar {...commonProps} />
+      
+      <div className="ml-16 mr-16">
+        <Navbar toggleTheme={toggleTheme} {...commonProps} />
+        <Hero {...commonProps} />
+        <About {...commonProps} />
+        <Awards {...commonProps} />
+        <Projects {...commonProps} />
+        <Contact {...commonProps} />
+        <Footer {...commonProps} />
+      </div>
+    </div>
   );
 }
 
