@@ -30,11 +30,11 @@ function Hero({ isDarkMode, accentColor }) {
         </p>
         <a
           href="#projects"
-          className={`inline-block px-8 py-4 border-2 rounded font-sfmono ${
+          className={`inline-block px-8 py-4 border-2 rounded font-sfmono shadow-md ${
             isDarkMode 
               ? 'border-green text-green hover:bg-green/10' 
-              : 'border-pink-400 text-pink-400 hover:bg-pink-50'
-          } transition-colors`}
+              : 'border-gray-400 text-gray-500 hover:bg-gray-50 hover:shadow-lg'
+          } transition-all duration-300`}
         >
           Check out my work!
         </a>

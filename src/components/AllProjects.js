@@ -82,7 +82,7 @@ function AllProjects({ isDarkMode, accentColor, hoverAccentColor }) {
   }
 
   return (
-    <section className={`py-20 px-6 ${isDarkMode ? 'bg-dark-navy' : 'bg-gray-50'} min-h-screen`}>
+    <section className={`py-20 px-6 ${isDarkMode ? 'bg-dark-navy' : ''} min-h-screen`}>
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <button
@@ -108,11 +108,11 @@ function AllProjects({ isDarkMode, accentColor, hoverAccentColor }) {
               placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className={`w-full pl-10 pr-4 py-2 rounded-md ${
+              className={`w-full pl-10 pr-4 py-2 rounded-md border-2 ${
                 isDarkMode 
-                  ? 'bg-light-navy text-slate focus:bg-lightest-navy' 
-                  : 'bg-white text-dark-navy placeholder-dark-navy/50'
-              } border border-transparent focus:outline-none focus:border-green-500`}
+                  ? 'bg-light-navy text-slate focus:bg-lightest-navy border-gray-700' 
+                  : 'bg-white text-dark-navy placeholder-dark-navy/50 border-gray-200'
+              } focus:outline-none focus:border-green-500`}
             />
           </div>
 
@@ -139,7 +139,7 @@ function AllProjects({ isDarkMode, accentColor, hoverAccentColor }) {
               className={`p-6 rounded-md shadow-md transform transition-all duration-300 ease-in-out hover:-translate-y-2 ${
                 isDarkMode 
                   ? 'bg-light-navy hover:shadow-lg hover:shadow-navy/50' 
-                  : 'bg-white hover:shadow-lg hover:shadow-pink-100/50'
+                  : 'bg-white border border-gray-200 hover:border-gray-300 hover:shadow-xl hover:shadow-gray-200/50'
               }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

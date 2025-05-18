@@ -53,7 +53,7 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
   }
 
   return (
-    <section id="projects" className={`py-20 px-6 ${isDarkMode ? 'bg-dark-navy' : 'bg-gray-50'}`}>
+    <section id="projects" className={`py-20 px-6 ${isDarkMode ? 'bg-dark-navy' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-12 ${
           isDarkMode ? 'text-lightest-slate' : 'text-gray-900'
@@ -68,7 +68,7 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
               className={`p-6 rounded-md shadow-md transform transition-all duration-300 ease-in-out hover:-translate-y-2 ${
                 isDarkMode 
                   ? 'bg-light-navy hover:shadow-lg hover:shadow-navy/50' 
-                  : 'bg-white hover:shadow-lg hover:shadow-pink-100/50'
+                  : 'bg-white border border-gray-200 hover:border-gray-300 hover:shadow-xl hover:shadow-gray-200/50'
               }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
