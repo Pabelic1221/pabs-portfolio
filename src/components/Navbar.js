@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
-  const [isVisible, setIsVisible] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      setIsVisible(currentScrollPos < prevScrollPos || currentScrollPos === 0);
-      setPrevScrollPos(currentScrollPos);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos]);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 flex items-center justify-between backdrop-blur-md transition-transform duration-300 ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      } ${isDarkMode ? 'shadow-lg shadow-navy/50' : 'shadow-lg shadow-gray-200/50'}`}
+      className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 flex items-center justify-between backdrop-blur-md ${
+        isDarkMode ? 'shadow-lg shadow-navy/50' : 'shadow-lg shadow-gray-200/50'
+      }`}
     >
       <div className="flex items-center space-x-4">
         {/* Logo */}
@@ -60,7 +47,7 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
         ))}
         <a
           href="#resume"
-          className={`ml-4 px-4 py-2 border font-sfmono ${isDarkMode ? 'border-green text-green hover:bg-green/10' : 'border-pink-400 text-pink-400 hover:bg-pink-400/10'} rounded transition-colors`}
+          className={`ml-4 px-4 py-2 border-2 font-sfmono ${isDarkMode ? 'border-green text-green hover:bg-green/10' : 'border-gray-300 text-pink-400 hover:bg-pink-400/10'} rounded transition-colors`}
         >
           Resume
         </a>
@@ -110,10 +97,10 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
         ))}
         <a
           href="#resume"
-          className={`mt-2 px-4 py-2 border font-sfmono ${
+          className={`mt-2 px-4 py-2 border-2 font-sfmono ${
             isDarkMode
               ? 'border-green text-green hover:bg-green/10'
-              : 'border-pink-400 text-pink-400 hover:bg-pink-400/10'
+              : 'border-gray-300 text-pink-400 hover:bg-pink-400/10'
           } rounded transition-colors text-center`}
           onClick={() => setIsMenuOpen(false)}
         >
