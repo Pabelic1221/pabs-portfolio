@@ -1,81 +1,70 @@
-import React, { useEffect } from 'react';
-import { FaFolderOpen, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useState, useEffect } from 'react';
+import { FaFolderOpen, FaExternalLinkAlt, FaGithub, FaStar, FaCodeBranch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { fetchGithubRepos } from '../utils/github';
+import { Link } from 'react-router-dom';
 
 function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
-  const projectList = [
-    {
-      title: 'Integrating Algolia Search with WordPress Multisite',
-      description: 'Building a custom multisite compatible WordPress plugin to build global search with Algolia',
-      tech: ['Algolia', 'WordPress', 'PHP'],
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Time to Have More Fun',
-      description: 'A single page web app for helping me choose where to travel, built with Next.js, Firebase, and Tailwind CSS',
-      tech: ['Next.js', 'Tailwind CSS', 'Firebase'],
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Building a Headless Mobile App CMS From Scratch',
-      description: 'Find out how we built a custom headless CMS with Node, Express, and Firebase for a project at Upstatement',
-      tech: ['Node', 'Express', 'Firebase', 'Vue'],
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'OctoProfile',
-      description: 'A nicer look at your GitHub profile and repo stats. Includes data visualizations of your top languages, starred repositories, and sort through your top repos by number of stars, forks, and size.',
-      tech: ['Next.js', 'Chart.js', 'GitHub API'],
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Google Keep Clone',
-      description: 'A simple Google Keep clone built with Vue and Firebase.',
-      tech: ['Vue', 'Firebase'],
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Apple Music Embeddable Web Player Widget',
-      description: 'Embeddable web player widget for Apple Music that lets users log in and listen to full song playback in the browser leveraging MusicKit.js.',
-      tech: ['MusicKit.js', 'JS', 'SCSS'],
-      link: '#',
-      github: '#',
-    },
-  ];
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Initialize AOS
-    AOS.init({
-      duration: 1000, // Animation duration
-      once: true, // Animation happens once
-      easing: 'ease-out', // Smooth easing
-    });
+    const loadRepos = async () => {
+      try {
+        setLoading(true);
+        const githubRepos = await fetchGithubRepos('Pabelic1221'); // Replace with your GitHub username
+        setRepos(githubRepos);
+      } catch (err) {
+        setError('Failed to load repositories');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRepos();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-20">
+        <p className={`text-lg ${isDarkMode ? 'text-slate' : 'text-gray-600'}`}>{error}</p>
+      </div>
+    );
+  }
+
+  if (repos.length === 0) {
+    return (
+      <div className="text-center py-20">
+        <p className={`text-lg ${isDarkMode ? 'text-slate' : 'text-gray-600'}`}>
+          No repositories with specified languages found.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <section id="projects" className={`py-20 px-6 ${isDarkMode ? 'bg-dark-navy' : 'bg-gray-50'}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-3 ${
+        <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-12 ${
           isDarkMode ? 'text-lightest-slate' : 'text-gray-900'
         }`}>
-          Other Noteworthy Projects
+          Featured Projects
         </h2>
-        <p className={`text-center ${accentColor} text-sm mb-12 cursor-pointer hover:underline`}>
-          view the archive
-        </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectList.map((project, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {repos.slice(0, 6).map((project) => (
             <motion.div
-              key={index}
-              data-aos="fade-up" // AOS animation effect
+              key={project.id}
               className={`p-6 rounded-md shadow-md transform transition-all duration-300 ease-in-out hover:-translate-y-2 ${
                 isDarkMode 
                   ? 'bg-light-navy hover:shadow-lg hover:shadow-navy/50' 
@@ -83,7 +72,7 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
               }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ opacity: { duration: 1 } }} // Duration of fade-in
+              transition={{ duration: 0.3 }}
             >
               <div className="flex items-center justify-between mb-4">
                 <FaFolderOpen className={accentColor + ' text-2xl'} />
@@ -96,18 +85,20 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
                   >
                     <FaGithub />
                   </a>
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className={`${isDarkMode ? 'text-slate' : 'text-gray-400'} ${hoverAccentColor} transition-colors`}
-                  >
-                    <FaExternalLinkAlt />
-                  </a>
+                  {project.link && (
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className={`${isDarkMode ? 'text-slate' : 'text-gray-400'} ${hoverAccentColor} transition-colors`}
+                    >
+                      <FaExternalLinkAlt />
+                    </a>
+                  )}
                 </div>
               </div>
 
-              <h3 className={`text-lg font-semibold mb-2 group-hover:${accentColor} ${
+              <h3 className={`text-lg font-semibold mb-2 font-sfmono ${
                 isDarkMode ? 'text-lightest-slate' : 'text-gray-900'
               }`}>
                 {project.title}
@@ -118,9 +109,27 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
                 {project.description}
               </p>
 
-              <ul className="flex flex-wrap gap-2 mt-auto text-xs">
+              <div className="flex items-center justify-between mb-4">
+                {project.stars > 0 && (
+                  <span className="flex items-center space-x-1">
+                    <FaStar className={accentColor} />
+                    <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.stars}</span>
+                  </span>
+                )}
+                {project.forks > 0 && (
+                  <span className="flex items-center space-x-1">
+                    <FaCodeBranch className={accentColor} />
+                    <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.forks}</span>
+                  </span>
+                )}
+              </div>
+
+              <ul className="flex flex-wrap gap-2 mt-auto text-xs justify-center">
+                <li className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} font-sfmono font-semibold text-[10px]`}>
+                  {project.language}
+                </li>
                 {project.tech.map((tech, i) => (
-                  <li key={i} className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor}`}>
+                  <li key={i} className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} text-[10px]`}>
                     {tech}
                   </li>
                 ))}
@@ -128,6 +137,13 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
             </motion.div>
           ))}
         </div>
+        
+        <Link 
+          to="/all-projects"
+          className={`block text-center ${accentColor} text-sm font-sfmono hover:underline`}
+        >
+          View All Projects →
+        </Link>
       </div>
     </section>
   );

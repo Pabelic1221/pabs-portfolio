@@ -1,34 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Awards from './components/Awards';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import SocialSidebar from './components/SocialSidebar';
-import EmailSidebar from './components/EmailSidebar';
+import SEO from './components/SEO';
+import LoadingSpinner from './components/LoadingSpinner';
+
+// Lazy load components that are not immediately visible
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const AllProjects = lazy(() => import('./components/AllProjects'));
+const Awards = lazy(() => import('./components/Awards'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const SocialSidebar = lazy(() => import('./components/SocialSidebar'));
+const EmailSidebar = lazy(() => import('./components/EmailSidebar'));
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme === 'dark' : true;
+  });
 
   useEffect(() => {
-    // Initialize AOS for components that still use it
+    // Initialize AOS once
     AOS.init({ 
       duration: 800, 
       once: true,
       disable: 'mobile' 
     });
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
-    } else {
-      localStorage.setItem('theme', 'dark');
-    }
   }, []);
 
   useEffect(() => {
@@ -45,12 +47,12 @@ function App() {
       document.body.classList.add('bg-white', 'text-black');
       document.body.classList.remove('bg-navy', 'text-white');
     }
+
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
 
   const toggleTheme = () => {
-    const newTheme = !isDarkMode ? 'dark' : 'light';
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem('theme', newTheme);
+    setIsDarkMode(prev => !prev);
   };
 
   const commonProps = {
@@ -60,20 +62,38 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen relative transition-colors duration-300">
-      <SocialSidebar {...commonProps} />
-      <EmailSidebar {...commonProps} />
-      
-      <div className="ml-16 mr-16">
-        <Navbar toggleTheme={toggleTheme} {...commonProps} />
-        <Hero {...commonProps} />
-        <About {...commonProps} />
-        <Awards {...commonProps} />
-        <Projects {...commonProps} />
-        <Contact {...commonProps} />
-        <Footer {...commonProps} />
+    <Router>
+      <div className="min-h-screen relative transition-colors duration-300">
+        <SEO />
+        <Suspense fallback={<LoadingSpinner />}>
+          <SocialSidebar {...commonProps} />
+          <EmailSidebar {...commonProps} />
+          
+          <div className="ml-16 mr-16">
+            <Navbar toggleTheme={toggleTheme} {...commonProps} />
+            <Routes>
+              <Route 
+                path="/" 
+                element={
+                  <>
+                    <Hero {...commonProps} />
+                    <About {...commonProps} />
+                    <Awards {...commonProps} />
+                    <Projects {...commonProps} />
+                    <Contact {...commonProps} />
+                    <Footer {...commonProps} />
+                  </>
+                } 
+              />
+              <Route 
+                path="/all-projects" 
+                element={<AllProjects {...commonProps} />} 
+              />
+            </Routes>
+          </div>
+        </Suspense>
       </div>
-    </div>
+    </Router>
   );
 }
 
