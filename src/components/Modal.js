@@ -14,7 +14,7 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
       timeoutId = setTimeout(() => {
         setIsVisible(false);
         setIsAnimating(false);
-      }, 300);
+      }, 250);
     }
     return () => {
       if (timeoutId) {
@@ -24,10 +24,12 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
   }, [isOpen, isVisible]);
 
   const handleClose = useCallback(() => {
-    onClose();
-  }, [onClose]);
+    if (!isAnimating) {
+      onClose();
+    }
+  }, [onClose, isAnimating]);
 
-  if (!isVisible) return null;
+  if (!isVisible && !isAnimating) return null;
 
   return (
     <div 
