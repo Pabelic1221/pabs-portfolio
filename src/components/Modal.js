@@ -15,7 +15,7 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
       timeoutId = setTimeout(() => {
         setIsVisible(false);
         setIsClosing(false);
-      }, 150);
+      }, 100);
     }
 
     return () => {
@@ -35,9 +35,14 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${
         isClosing ? 'animate-fadeOut' : 'animate-fadeIn'
       }`}
+      style={{
+        backgroundColor: isClosing ? 'transparent' : 'rgba(0, 0, 0, 0.5)',
+        backdropFilter: isClosing ? 'none' : 'blur(4px)',
+        transition: 'background-color 0.1s ease-out, backdrop-filter 0.1s ease-out'
+      }}
       onClick={handleClose}
     >
       <div 
