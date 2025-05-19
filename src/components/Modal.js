@@ -1,42 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
-  const [isClosing, setIsClosing] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen) {
-      setIsClosing(false);
-    }
-  }, [isOpen]);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-    }, 200); // Match this with the animation duration
-  };
-
-  if (!isOpen && !isClosing) return null;
+  if (!isOpen) return null;
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${
-        isClosing ? 'animate-fade-out' : 'animate-fade-in'
-      }`}
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
-      onClick={handleClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={onClose}
     >
       <div 
         className={`relative w-full max-w-4xl rounded-lg ${
           isDarkMode ? 'bg-navy' : 'bg-white'
-        } p-6 shadow-xl ${
-          isClosing ? 'animate-modal-out' : 'animate-modal-in'
-        }`}
+        } p-6 shadow-xl`}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
         <button
-          onClick={handleClose}
+          onClick={onClose}
           className={`absolute top-4 left-4 p-2 rounded-full ${
             isDarkMode ? 'hover:bg-slate/20' : 'hover:bg-gray-100'
           } transition-colors`}
