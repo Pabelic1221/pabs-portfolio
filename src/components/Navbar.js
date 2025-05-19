@@ -46,7 +46,7 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           </a>
         ))}
         <a
-          href="#resume"
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           className={`ml-4 px-4 py-2 border-2 font-sfmono ${isDarkMode ? 'border-green text-green hover:bg-green/10' : 'border-gray-300 text-pink-400 hover:bg-pink-400/10'} rounded transition-colors`}
         >
           Resume
@@ -96,7 +96,7 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           </a>
         ))}
         <a
-          href="#resume"
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           className={`mt-2 px-4 py-2 border-2 font-sfmono ${
             isDarkMode
               ? 'border-green text-green hover:bg-green/10'
