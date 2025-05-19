@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaTrophy } from 'react-icons/fa';
 import award1Image from '../assets/Images/CCI_000088.jpg';
 import award2Image from '../assets/Images/CCI_000084.jpg';
+import Modal from './Modal';
 
 function Awards({ isDarkMode, accentColor }) {
+  const [selectedAward, setSelectedAward] = useState(null);
+
   const awards = [
     {
       title: 'Digital Solution Showcase',
@@ -41,16 +44,17 @@ function Awards({ isDarkMode, accentColor }) {
           >
             <div className="md:w-1/2">
               <div 
-                className={`w-full h-64 rounded-md overflow-hidden ${
+                className={`w-full h-64 rounded-md overflow-hidden cursor-pointer ${
                   isDarkMode 
                     ? 'shadow-lg shadow-navy/50' 
                     : 'shadow-lg shadow-gray-200/50'
                 }`}
+                onClick={() => setSelectedAward(award)}
               >
                 <img
                   src={award.image}
                   alt={award.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
               </div>
@@ -85,6 +89,14 @@ function Awards({ isDarkMode, accentColor }) {
           </div>
         ))}
       </div>
+
+      <Modal
+        isOpen={selectedAward !== null}
+        onClose={() => setSelectedAward(null)}
+        award={selectedAward}
+        isDarkMode={isDarkMode}
+        accentColor={accentColor}
+      />
     </section>
   );
 }
