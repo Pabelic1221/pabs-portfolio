@@ -4,21 +4,25 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn"
+      onClick={onClose}
+    >
       <div 
-        className={`relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg ${
+        className={`relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg ${
           isDarkMode ? 'bg-navy' : 'bg-white'
-        } p-6 shadow-xl`}
+        } p-6 shadow-xl animate-slideIn`}
+        onClick={e => e.stopPropagation()}
       >
-        {/* Close button */}
+        {/* Return button */}
         <button
           onClick={onClose}
-          className={`absolute top-4 right-4 p-2 rounded-full ${
+          className={`absolute top-4 left-4 p-2 rounded-full flex items-center gap-2 ${
             isDarkMode ? 'hover:bg-slate/20' : 'hover:bg-gray-100'
           } transition-colors`}
         >
           <svg
-            className="w-6 h-6"
+            className="w-5 h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -27,18 +31,21 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
             />
           </svg>
+          <span className={`text-sm font-sfmono ${isDarkMode ? 'text-light-slate' : 'text-gray-600'}`}>
+            Return
+          </span>
         </button>
 
         {/* Modal content */}
-        <div className="space-y-6">
-          <div className="w-full h-96 rounded-lg overflow-hidden">
+        <div className="space-y-6 mt-12">
+          <div className="w-full rounded-lg overflow-hidden">
             <img
               src={award.image}
               alt={award.title}
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-contain"
             />
           </div>
 

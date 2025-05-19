@@ -21,6 +21,8 @@ module.exports = {
       animation: {
         float: 'float 3s ease-in-out infinite',
         'slide-down': 'slide-down 0.5s ease-out',
+        fadeIn: 'fadeIn 0.3s ease-out',
+        slideIn: 'slideIn 0.3s ease-out',
       },
       keyframes: {
         float: {
@@ -29,6 +31,14 @@ module.exports = {
         },
         'slide-down': {
           '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideIn: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
