@@ -34,7 +34,7 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
       </div>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex space-x-6 items-center">
+      <div className="hidden md:flex space-x-10 items-center">
         {['About', 'Achievements', 'Projects', 'Contact'].map((item) => (
           <a
             key={item}

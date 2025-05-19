@@ -11,7 +11,7 @@ function SocialSidebar({ isDarkMode, accentColor, hoverAccentColor }) {
   ];
 
   return (
-    <div className="fixed bottom-0 left-10 h-auto flex flex-col items-center justify-end py-6 px-2 z-50">
+    <div className="fixed bottom-0 left-6 h-auto flex flex-col items-center justify-end py-6 px-2 z-50">
       <div className="flex flex-col space-y-6 mb-6">
         {socialLinks.map((social, index) => (
           <a
