@@ -11,7 +11,7 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
       <div 
         className={`relative w-full max-w-4xl rounded-lg ${
           isDarkMode ? 'bg-navy' : 'bg-white'
-        } p-6 shadow-xl`}
+        } p-6 shadow-xl animate-modal-in`}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
