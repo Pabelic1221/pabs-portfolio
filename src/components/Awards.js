@@ -28,7 +28,7 @@ function Awards({ isDarkMode, accentColor }) {
   return (
     <section className="py-20 px-6 sm:px-12" id="achievements">
       <div className="max-w-6xl mx-auto">
-        <h2 className={`${accentColor} text-lg font-sfmono mb-4`}>03. Notable Achievements</h2>
+        <h2 className={`${accentColor} text-lg font-sfmono mb-4`}>Notable Achievements</h2>
         
         {awards.map((award, index) => (
           <div

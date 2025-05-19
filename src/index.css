@@ -20,3 +20,42 @@ code {
 html {
   scroll-behavior: smooth;
 }
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #64ffda;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4fd1c5;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #64ffda transparent;
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: #64ffda;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4fd1c5;
+  }
+  
+  * {
+    scrollbar-color: #64ffda transparent;
+  }
+}

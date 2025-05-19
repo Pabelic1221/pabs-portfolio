@@ -7,7 +7,7 @@ function Contact({ isDarkMode, accentColor }) {
       className="py-20 px-6 text-center"
     >
       <div className="max-w-2xl mx-auto">
-        <p className={`${accentColor} text-sm font-sfmono mb-4`}>04. What's Next?</p>
+        <p className={`${accentColor} text-sm font-sfmono mb-4`}>What's Next?</p>
         <h2 className={`text-4xl font-bold mb-6 font-sfmono ${
           isDarkMode ? 'text-lightest-slate' : 'text-gray-900'
         }`}>

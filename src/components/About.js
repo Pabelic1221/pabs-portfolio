@@ -12,7 +12,7 @@ const About = memo(({ isDarkMode, accentColor }) => {
           id="about-title"
           className={`text-3xl font-semibold mb-8 ${isDarkMode ? 'text-lightest-slate' : 'text-gray-900'}`}
         >
-          <span className={accentColor}>01.</span>
+          <span className={accentColor}></span>
           About Me
         </h2>
 

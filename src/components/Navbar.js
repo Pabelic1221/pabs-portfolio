@@ -35,13 +35,12 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex space-x-6 items-center">
-        {['About', 'Achievements', 'Projects', 'Contact'].map((item, index) => (
+        {['About', 'Achievements', 'Projects', 'Contact'].map((item) => (
           <a
             key={item}
             href={`#${item.toLowerCase()}`}
             className={`font-sfmono ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} ${hoverAccentColor} transition-colors`}
           >
-            <span className={accentColor}>{`0${index + 1}. `}</span>
             {item}
           </a>
         ))}
@@ -84,14 +83,13 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
             : 'opacity-0 -translate-y-2 invisible pointer-events-none'
         }`}
       >
-        {['About', 'Achievements', 'Projects', 'Contact'].map((item, index) => (
+        {['About', 'Achievements', 'Projects', 'Contact'].map((item) => (
           <a
             key={item}
             href={`#${item.toLowerCase()}`}
             className={`font-sfmono ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} ${hoverAccentColor} transition-colors`}
             onClick={() => setIsMenuOpen(false)}
           >
-            <span className={accentColor}>{`0${index + 1}. `}</span>
             {item}
           </a>
         ))}
