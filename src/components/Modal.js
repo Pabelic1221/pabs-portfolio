@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
   const [isClosing, setIsClosing] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) {
+    if (isOpen) {
+      setIsVisible(true);
       setIsClosing(false);
     }
   }, [isOpen]);
@@ -12,11 +14,12 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
+      setIsVisible(false);
       onClose();
-    }, 300); // Match this with animation duration
+    }, 300);
   };
 
-  if (!isOpen && !isClosing) return null;
+  if (!isVisible) return null;
 
   return (
     <div 
@@ -104,4 +107,4 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
   );
 }
 
-export default Modal; 
+export default Modal;
