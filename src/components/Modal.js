@@ -1,30 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
-  const [isClosing, setIsClosing] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
+    let timeoutId;
     if (isOpen) {
       setIsVisible(true);
-      setIsClosing(false);
+      setIsAnimating(false);
+    } else if (isVisible) {
+      setIsAnimating(true);
+      timeoutId = setTimeout(() => {
+        setIsVisible(false);
+        setIsAnimating(false);
+      }, 300);
     }
-  }, [isOpen]);
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [isOpen, isVisible]);
 
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsVisible(false);
-      onClose();
-    }, 300);
-  };
+  const handleClose = useCallback(() => {
+    onClose();
+  }, [onClose]);
 
   if (!isVisible) return null;
 
   return (
     <div 
       className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm ${
-        isClosing ? 'animate-fadeOut' : 'animate-fadeIn'
+        isAnimating ? 'animate-fadeOut' : 'animate-fadeIn'
       }`}
       onClick={handleClose}
     >
@@ -32,7 +40,7 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
         className={`relative w-full max-w-4xl rounded-lg ${
           isDarkMode ? 'bg-navy' : 'bg-white'
         } p-6 shadow-xl ${
-          isClosing ? 'animate-slideOut' : 'animate-slideIn'
+          isAnimating ? 'animate-slideOut' : 'animate-slideIn'
         }`}
         onClick={e => e.stopPropagation()}
       >
