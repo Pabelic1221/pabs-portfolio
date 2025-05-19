@@ -15,7 +15,7 @@ function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
       timeoutId = setTimeout(() => {
         setIsVisible(false);
         setIsClosing(false);
-      }, 300);
+      }, 150);
     }
 
     return () => {
