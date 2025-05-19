@@ -2,7 +2,7 @@ import React from 'react';
 
 const EmailSidebar = ({ isDarkMode, hoverAccentColor }) => {
   return (
-    <div className="fixed bottom-5 right-[40px] h-auto items-center justify-end z-50">
+    <div className="fixed bottom-5 right-[35px] h-auto items-center justify-end z-50">
       <div className="flex items-center transform rotate-90 origin-bottom-right">
         <div className="mr-6">
           <a
