@@ -4,11 +4,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function ProjectCard({ project }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <div
       className="relative group"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="relative overflow-hidden rounded-lg shadow-lg">
         <img
@@ -19,14 +23,18 @@ export default function ProjectCard({ project }) {
         <div className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 group-hover:bg-opacity-70" />
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isHovered && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 5 }}
-            transition={{ duration: 0.2 }}
+            transition={{ 
+              duration: 0.2,
+              ease: "easeInOut"
+            }}
             className="absolute inset-0 flex flex-col justify-center items-center p-4 text-white"
+            onMouseLeave={handleMouseLeave}
           >
             <h3 className="text-xl font-bold mb-2">{project.title}</h3>
             <p className="text-sm text-center mb-4">{project.description}</p>
