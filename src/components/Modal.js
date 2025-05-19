@@ -1,25 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 function Modal({ isOpen, onClose, award, isDarkMode, accentColor }) {
   const [isClosing, setIsClosing] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let timeoutId;
+    
     if (isOpen) {
       setIsVisible(true);
       setIsClosing(false);
+    } else if (isVisible) {
+      setIsClosing(true);
+      timeoutId = setTimeout(() => {
+        setIsVisible(false);
+        setIsClosing(false);
+      }, 300);
     }
-  }, [isOpen]);
 
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsVisible(false);
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [isOpen, isVisible]);
+
+  const handleClose = useCallback(() => {
+    if (!isClosing) {
       onClose();
-    }, 300);
-  };
+    }
+  }, [onClose, isClosing]);
 
-  if (!isVisible) return null;
+  if (!isVisible && !isClosing) return null;
 
   return (
     <div 
