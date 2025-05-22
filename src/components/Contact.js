@@ -23,7 +23,7 @@ function Contact({ isDarkMode, accentColor }) {
           href="mailto:jushuapabelic@gmail.com"
           className={`inline-block px-8 py-4 border-2 rounded font-sfmono shadow-md transition-all duration-300
             ${isDarkMode 
-              ? 'border-green text-green hover:bg-navy hover:text-white' 
+              ? 'border-green text-green hover:bg-green hover:text-navy' 
               : 'border-gray-400 text-gray-500 hover:bg-gray-900 hover:text-white'}
           `}
         >
