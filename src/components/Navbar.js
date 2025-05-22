@@ -48,9 +48,13 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           href="https://drive.google.com/file/d/1aZDq1-qo8LOaNkrYPtbiZkwbUCK4FFVY/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className={`ml-4 px-4 py-2 border-2 font-sfmono ${isDarkMode ? 'border-green text-green hover:bg-green/10' : 'border-gray-300 text-pink-400 hover:bg-pink-400/10'} rounded transition-colors`}
+          className={`ml-4 px-6 py-3 border-2 font-sfmono transition-all duration-300
+            ${isDarkMode 
+              ? 'border-green text-green hover:bg-green hover:text-navy' 
+              : 'border-gray-300 text-pink-400 hover:bg-gray-900 hover:text-white'}
+          `}
         >
-          My CV
+          CV
         </a>
       </div>
 
@@ -99,14 +103,14 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           href="https://drive.google.com/file/d/1aZDq1-qo8LOaNkrYPtbiZkwbUCK4FFVY/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className={`mt-2 px-4 py-2 border-2 font-sfmono ${
-            isDarkMode
-              ? 'border-green text-green hover:bg-green/10'
-              : 'border-gray-300 text-pink-400 hover:bg-pink-400/10'
-          } rounded transition-colors text-center`}
+          className={`mt-2 px-6 py-3 border-2 font-sfmono transition-all duration-300
+            ${isDarkMode 
+              ? 'border-green text-green hover:bg-green hover:text-navy' 
+              : 'border-gray-300 text-pink-400 hover:bg-gray-900 hover:text-white'}
+          text-center`}
           onClick={() => setIsMenuOpen(false)}
         >
-          My CV
+          CV
         </a>
       </div>
     </nav>
