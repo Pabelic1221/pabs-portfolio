@@ -188,7 +188,7 @@ function AllProjects({ isDarkMode, accentColor, hoverAccentColor }) {
                     </span>
                   )}
                   {project.tech.map((tech, i) => (
-                    <span key={i} className={`font-sfmono text-[10px] ${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor}`}>
+                    <span key={i} className={`font-sfmono font-semibold text-[10px] ${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor}`}>
                       {tech}
                     </span>
                   ))}
