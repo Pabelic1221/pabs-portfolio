@@ -109,31 +109,35 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
                 {project.description}
               </p>
 
-              <div className="flex items-center justify-between mb-4">
-                {project.stars > 0 && (
-                  <span className="flex items-center space-x-1">
-                    <FaStar className={accentColor} />
-                    <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.stars}</span>
-                  </span>
-                )}
-                {project.forks > 0 && (
-                  <span className="flex items-center space-x-1">
-                    <FaCodeBranch className={accentColor} />
-                    <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.forks}</span>
-                  </span>
-                )}
-              </div>
+              <div className="flex justify-between items-center">
+                <div className="flex items-center space-x-4">
+                  {project.stars > 0 && (
+                    <span className="flex items-center space-x-1">
+                      <FaStar className={accentColor} />
+                      <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.stars}</span>
+                    </span>
+                  )}
+                  {project.forks > 0 && (
+                    <span className="flex items-center space-x-1">
+                      <FaCodeBranch className={accentColor} />
+                      <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.forks}</span>
+                    </span>
+                  )}
+                </div>
 
-              <ul className="flex flex-wrap gap-2 mt-auto text-xs justify-center">
-                <li className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} font-sfmono font-semibold text-[10px]`}>
-                  {project.language}
-                </li>
-                {project.tech.map((tech, i) => (
-                  <li key={i} className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} text-[10px]`}>
-                    {tech}
-                  </li>
-                ))}
-              </ul>
+                <div className="flex items-center space-x-2">
+                  {project.language && (
+                    <span className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} font-sfmono font-semibold text-[10px]`}>
+                      {project.language}
+                    </span>
+                  )}
+                  {project.tech.slice(0, 2).map((tech, i) => (
+                    <span key={i} className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} text-[10px]`}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
