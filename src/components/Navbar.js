@@ -48,7 +48,7 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           href="https://drive.google.com/file/d/1aZDq1-qo8LOaNkrYPtbiZkwbUCK4FFVY/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className={`ml-4 px-6 py-3 border-2 font-sfmono transition-all duration-300
+          className={`ml-4 px-6 py-3 border-2 rounded font-sfmono transition-all duration-300
             ${isDarkMode 
               ? 'border-green text-green hover:bg-green hover:text-navy' 
               : 'border-gray-300 text-pink-400 hover:bg-gray-900 hover:text-white'}
@@ -103,7 +103,7 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           href="https://drive.google.com/file/d/1aZDq1-qo8LOaNkrYPtbiZkwbUCK4FFVY/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className={`mt-2 px-6 py-3 border-2 font-sfmono transition-all duration-300
+          className={`mt-2 px-6 py-3 border-2 rounded font-sfmono transition-all duration-300
             ${isDarkMode 
               ? 'border-green text-green hover:bg-green hover:text-navy' 
               : 'border-gray-300 text-pink-400 hover:bg-gray-900 hover:text-white'}
