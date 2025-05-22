@@ -183,12 +183,12 @@ function AllProjects({ isDarkMode, accentColor, hoverAccentColor }) {
               <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-2">
                   {project.language && (
-                    <span className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} font-sfmono font-semibold text-[10px]`}>
+                    <span className={`font-sfmono font-semibold text-[10px] ${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor}`}>
                       {project.language}
                     </span>
                   )}
                   {project.tech.map((tech, i) => (
-                    <span key={i} className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} text-[10px]`}>
+                    <span key={i} className={`font-sfmono text-[10px] ${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor}`}>
                       {tech}
                     </span>
                   ))}
