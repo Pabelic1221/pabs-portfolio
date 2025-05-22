@@ -45,10 +45,12 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           </a>
         ))}
         <a
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          href="/PABELIC_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className={`ml-4 px-4 py-2 border-2 font-sfmono ${isDarkMode ? 'border-green text-green hover:bg-green/10' : 'border-gray-300 text-pink-400 hover:bg-pink-400/10'} rounded transition-colors`}
         >
-          Resume
+          CV
         </a>
       </div>
 
@@ -94,7 +96,9 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           </a>
         ))}
         <a
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          href="/PABELIC_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className={`mt-2 px-4 py-2 border-2 font-sfmono ${
             isDarkMode
               ? 'border-green text-green hover:bg-green/10'
@@ -102,7 +106,7 @@ function Navbar({ toggleTheme, isDarkMode, accentColor, hoverAccentColor }) {
           } rounded transition-colors text-center`}
           onClick={() => setIsMenuOpen(false)}
         >
-          Resume
+          CV
         </a>
       </div>
     </nav>
