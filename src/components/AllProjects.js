@@ -181,24 +181,6 @@ function AllProjects({ isDarkMode, accentColor, hoverAccentColor }) {
               </p>
 
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-4">
-                  {project.stars > 0 && (
-                    <span className="flex items-center space-x-1">
-                      <FaStar className={accentColor} />
-                      <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.stars}</span>
-                    </span>
-                  )}
-                  {project.forks > 0 && (
-                    <span className="flex items-center space-x-1">
-                      <FaCodeBranch className={accentColor} />
-                      <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.forks}</span>
-                    </span>
-                  )}
-                  <span className={`text-xs ${isDarkMode ? 'text-slate' : 'text-gray-500'}`}>
-                    {new Date(project.createdAt).toLocaleDateString()}
-                  </span>
-                </div>
-
                 <div className="flex items-center space-x-2">
                   {project.language && (
                     <span className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} font-sfmono font-semibold text-[10px]`}>
@@ -210,6 +192,26 @@ function AllProjects({ isDarkMode, accentColor, hoverAccentColor }) {
                       {tech}
                     </span>
                   ))}
+                </div>
+
+                <div className="flex flex-col items-end space-y-1">
+                  <span className={`text-xs ${isDarkMode ? 'text-slate' : 'text-gray-500'}`}>
+                    {new Date(project.createdAt).toLocaleDateString()}
+                  </span>
+                  <div className="flex items-center space-x-4">
+                    {project.stars > 0 && (
+                      <span className="flex items-center space-x-1">
+                        <FaStar className={accentColor} />
+                        <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.stars}</span>
+                      </span>
+                    )}
+                    {project.forks > 0 && (
+                      <span className="flex items-center space-x-1">
+                        <FaCodeBranch className={accentColor} />
+                        <span className={isDarkMode ? 'text-slate' : 'text-gray-600'}>{project.forks}</span>
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>
