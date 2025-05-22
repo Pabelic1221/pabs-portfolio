@@ -9,11 +9,19 @@ export const fetchGithubRepos = async (username) => {
     // Filter out forked repositories and repos without a language
     const filteredRepos = repos.filter(repo => !repo.fork && repo.language);
     
+    // Custom stacks for specific repositories
+    const customStacks = {
+      'pabs-portfolio': ['React', 'Tailwind CSS'],
+      'carmedic-latest': ['React Native', 'Redux', 'Firebase'],
+      'LOGIN-CITC-CONEXT': ['ReactJS', 'MongoDB'],
+      // Add more custom stacks for other repositories as needed
+    };
+    
     return filteredRepos.map(repo => ({
       id: repo.id,
       title: repo.name,
       description: repo.description || 'No description available',
-      tech: repo.topics || [],
+      tech: customStacks[repo.name] || repo.topics || [],
       link: repo.homepage || '',
       github: repo.html_url,
       createdAt: repo.created_at,

@@ -187,7 +187,7 @@ function AllProjects({ isDarkMode, accentColor, hoverAccentColor }) {
                       {project.language}
                     </span>
                   )}
-                  {project.tech.slice(0, 2).map((tech, i) => (
+                  {project.tech.map((tech, i) => (
                     <span key={i} className={`${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor} text-[10px]`}>
                       {tech}
                     </span>
