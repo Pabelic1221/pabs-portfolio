@@ -110,7 +110,7 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
               </p>
 
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-2">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                   {project.language && (
                     <span className={`font-sfmono font-semibold text-[10px] ${isDarkMode ? 'text-slate' : 'text-gray-500'} ${hoverAccentColor}`}>
                       {project.language}
