@@ -4,7 +4,7 @@ function Contact({ isDarkMode, accentColor }) {
   return (
     <section
       id="contact"
-      className="py-20 px-6 text-center"
+      className="py-24 px-6 text-center scroll-mt-20"
     >
       <div className="max-w-2xl mx-auto">
         <p className={`${accentColor} text-sm font-sfmono mb-4`}>What's Next?</p>

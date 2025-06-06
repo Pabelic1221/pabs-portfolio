@@ -17,7 +17,7 @@ function SocialSidebar({ isDarkMode, accentColor, hoverAccentColor }) {
           <a
             key={index}
             href={social.url}
-            className={`${isDarkMode ? 'text-slate' : 'text-gray-400'} ${hoverAccentColor} transition-colors`}
+            className={`${isDarkMode ? 'text-slate' : 'text-gray-400'} ${isDarkMode ? hoverAccentColor : 'hover:text-gray-600'} transition-colors`}
             target="_blank"
             rel="noopener noreferrer"
           >

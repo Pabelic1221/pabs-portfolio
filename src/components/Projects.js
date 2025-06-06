@@ -53,7 +53,7 @@ function Projects({ isDarkMode, accentColor, hoverAccentColor }) {
   }
 
   return (
-    <section id="projects" className={`py-20 px-6 ${isDarkMode ? 'bg-dark-navy' : 'bg-white'}`}>
+    <section id="projects" className={`py-24 px-6 ${isDarkMode ? 'bg-dark-navy' : 'bg-white'} scroll-mt-20`}>
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-12 ${
           isDarkMode ? 'text-lightest-slate' : 'text-gray-900'

@@ -7,7 +7,7 @@ const EmailSidebar = ({ isDarkMode, hoverAccentColor }) => {
         <div className="mr-6">
           <a
             href="mailto:jushuapabelic@gmail.com"
-            className={`font-sfmono ${isDarkMode ? 'text-slate' : 'text-gray-400'} ${hoverAccentColor} transition-colors text-sm tracking-widest`}
+            className={`font-sfmono ${isDarkMode ? 'text-slate' : 'text-gray-400'} ${isDarkMode ? hoverAccentColor : 'hover:text-gray-600'} transition-colors text-sm tracking-widest`}
           >
             pabelicjush@gmail.com
           </a>

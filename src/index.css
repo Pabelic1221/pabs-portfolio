@@ -30,32 +30,34 @@ html {
   background: transparent;
 }
 
+/* Light mode scrollbar (default) */
 ::-webkit-scrollbar-thumb {
-  background: #64ffda;
+  background: #9CA3AF; /* Light gray color for light mode */
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4fd1c5;
+  background: #6B7280; /* Darker gray on hover for light mode */
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #64ffda transparent;
+  scrollbar-color: #9CA3AF transparent; /* Light gray color for light mode */
 }
 
 /* Dark mode scrollbar */
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-thumb {
-    background: #64ffda;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #4fd1c5;
-  }
-  
-  * {
-    scrollbar-color: #64ffda transparent;
-  }
+html.dark ::-webkit-scrollbar-thumb,
+body.bg-navy ::-webkit-scrollbar-thumb {
+  background: #64ffda;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover,
+body.bg-navy ::-webkit-scrollbar-thumb:hover {
+  background: #4fd1c5;
+}
+
+html.dark *,
+body.bg-navy * {
+  scrollbar-color: #64ffda transparent;
 }

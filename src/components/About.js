@@ -6,7 +6,7 @@ const About = memo(({ isDarkMode, accentColor }) => {
   const { introduction, experience, recentWork, technologies } = aboutContent;
 
   return (
-    <section id="about" className="py-16" aria-labelledby="about-title">
+    <section id="about" className="py-32 scroll-mt-20" aria-labelledby="about-title">
       <div className="max-w-5xl mx-auto px-6">
         <h2 
           id="about-title"
