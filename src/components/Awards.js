@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaTrophy } from 'react-icons/fa';
 import Modal from './Modal';
-import { awards } from '../Content'; // ✅ import awards data
+import { awards } from '../config/content';
 
 function Awards({ isDarkMode, accentColor }) {
   const [selectedAward, setSelectedAward] = useState(null);

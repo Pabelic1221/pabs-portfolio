@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
-import { experiences } from "../Content"; // import from content.js
+import { experiences } from "../config/content";
 
 function Experience({ isDarkMode, accentColor }) {
   const [selectedExp, setSelectedExp] = useState(null);
