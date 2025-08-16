@@ -87,7 +87,7 @@ export const experiences = [
     icon: FaCode,
   },
   {
-    title: "Intern Devops Engineer",
+    title: "DevOps Intern",
     company: "Apollotech Software Solutions",
     duration: "Feb - May 2025",
     description:
