@@ -16,30 +16,29 @@ function Experience({ isDarkMode, accentColor }) {
             <div
               key={index}
               className={`flex flex-col md:flex-row ${
-                index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                index % 2 === 0 ? "md:flex-row-reverse" : ""
               } items-center gap-8 mb-12`}
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              {/* Left Column (Clickable Block with Dynamic Icon) */}
+
+              {/* Left Column (Static Block with Dynamic Icon + hover animation) */}
               <div className="md:w-1/2">
                 <div
-                  className={`w-full h-64 rounded-md overflow-hidden cursor-pointer flex items-center justify-center text-center p-6 ${
+                  className={`w-full h-64 rounded-md overflow-hidden flex items-center justify-center text-center p-6 ${
                     isDarkMode
                       ? "shadow-lg shadow-navy/50 bg-navy-light"
                       : "shadow-lg shadow-gray-200/50 bg-gray-100"
                   }`}
-                  onClick={() => setSelectedExp(exp)}
                 >
-                  <Icon className={`${accentColor} text-5xl`} />
+                  <Icon
+                    className={`${accentColor} text-5xl transform transition-transform duration-300 hover:scale-125`}
+                  />
                 </div>
               </div>
 
               {/* Right Column (Details) */}
               <div className="md:w-1/2">
-                <p className={`${accentColor} text-sm font-sfmono mb-2`}>
-                  Professional Role
-                </p>
                 <h3
                   className={`text-2xl font-semibold mb-4 flex items-center gap-2 font-sfmono ${
                     isDarkMode ? "text-lightest-slate" : "text-gray-900"
@@ -47,44 +46,32 @@ function Experience({ isDarkMode, accentColor }) {
                 >
                   <Icon className={accentColor} /> {exp.title}
                 </h3>
-
+              
                 {/* Company & Duration */}
-                <ul className="text-xs font-sfmono mb-4">
-                  <li
-                    className={
-                      isDarkMode ? "text-slate-400" : "text-gray-500"
-                    }
+                  <ul className="text-xs font-sfmono mb-4">
+                    <li className={accentColor}>{exp.company}</li>
+                    <li className={accentColor}>{exp.duration}</li>
+                  </ul>
+              
+                  {/* Description */}
+                  <p
+                    className={`text-sm mb-4 ${
+                      isDarkMode ? "text-light-slate" : "text-gray-600"
+                    }`}
                   >
-                    <strong>Company:</strong> {exp.company}
-                  </li>
-                  <li
-                    className={
-                      isDarkMode ? "text-slate-400" : "text-gray-500"
-                    }
-                  >
-                    <strong>Duration:</strong> {exp.duration}
-                  </li>
-                </ul>
-
-                {/* Description */}
-                <p
-                  className={`text-sm mb-4 ${
-                    isDarkMode ? "text-light-slate" : "text-gray-600"
-                  }`}
-                >
-                  {exp.description}
-                </p>
-              </div>
+                    {exp.description}
+                  </p>
+                </div>
             </div>
           );
         })}
       </div>
 
-      {/* Modal for Expanded Experience */}
+      {/* Modal for Expanded Experience (can trigger elsewhere if needed) */}
       <Modal
         isOpen={selectedExp !== null}
         onClose={() => setSelectedExp(null)}
-        award={selectedExp} // reuse modal by passing exp data
+        award={selectedExp}
         isDarkMode={isDarkMode}
         accentColor={accentColor}
       />

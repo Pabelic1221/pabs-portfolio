@@ -1,7 +1,12 @@
+import award1Image from '../assets/Images/CCI_000088.jpg';
+import award2Image from '../assets/Images/CCI_000084.jpg';
+
+import { FaTools, FaCode, FaBug } from 'react-icons/fa';
+
 export const aboutContent = {
-  introduction: "Hello! My name is Jushua and I enjoy creating things that live on the internet. My interest in web development started back in 2017 when I decided to try HTML and CSS.",
-  experience: "I have been working as a junior web developer for 3 years now. I have worked with a variety of technologies and basic frameworks, but my favorite is React.",
-  recentWork: "I also recently learned basic Kubernetes and Docker from my internship at a company called 'Apollotech Software Corporation'.",
+  introduction: "I’m Jushua, a tech professional with a strong passion for creating digital solutions. My journey started in 2017 with web development, and since then I’ve expanded my skills in IT support, development, and DevOps.",
+  experience: "I have worked as an IT Technical Support Specialist, providing technical solutions and ensuring smooth operations, and as a Web Developer, building responsive and user-friendly applications with modern frameworks.",
+  recentWork: "Recently, I completed an internship as a DevOps Engineer at Apollotech Software Corporation, where I gained hands-on experience with Kubernetes, Docker, and cloud-based deployment.",
   technologies: [
     'JavaScript',
     'MySQL',
