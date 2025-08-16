@@ -1,32 +1,10 @@
 import React, { useState } from 'react';
 import { FaTrophy } from 'react-icons/fa';
-import award1Image from '../assets/Images/CCI_000088.jpg';
-import award2Image from '../assets/Images/CCI_000084.jpg';
 import Modal from './Modal';
+import { awards } from '../Content'; // ✅ import awards data
 
 function Awards({ isDarkMode, accentColor }) {
   const [selectedAward, setSelectedAward] = useState(null);
-
-  const awards = [
-    {
-      title: 'Digital Solution Showcase',
-      description:
-        'Participated and showcased innovative mobile application solutions at the Digital Solution Showcase event, demonstrating technical expertise in React Native mobile development and creative problem-solving abilities in cross-platform mobile applications.',
-      tech: ['React Native', 'Mobile Development', 'Cross-Platform', 'UI/UX Design'],
-      date: 'November 20, 2024',
-      location: 'University of Science and Technology of Southern Philippines (USTP), Cagayan de Oro City',
-      image: award1Image,
-    },
-    {
-      title: '2nd Place - Pitching Competition',
-      description:
-        'Awarded 2nd place in the Pitching Competition during the CDO b.i.t.e.s & Synctactics Pink Roadshow Event, showcasing exceptional presentation skills and innovative business solutions.',
-      tech: ['Business Pitch', 'Innovation', 'Entrepreneurship', 'Tech Solutions'],
-      date: 'January 21, 2023',
-      location: 'Synctactics, RAMI Corporate Building Corner Tiano, Mabini St. Cagayan de Oro City',
-      image: award2Image,
-    },
-  ];
 
   return (
     <section className="py-32 px-6 sm:px-12 scroll-mt-20" id="achievements">

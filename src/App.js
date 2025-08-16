@@ -17,6 +17,7 @@ const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 const SocialSidebar = lazy(() => import('./components/SocialSidebar'));
 const EmailSidebar = lazy(() => import('./components/EmailSidebar'));
+const Experience = lazy(() => import('./components/Experience'));
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -78,6 +79,7 @@ function App() {
                   <>
                     <Hero {...commonProps} />
                     <About {...commonProps} />
+                    <Experience {...commonProps} />
                     <Awards {...commonProps} />
                     <Projects {...commonProps} />
                     <Contact {...commonProps} />
