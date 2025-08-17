@@ -8,7 +8,7 @@ function Experience({ isDarkMode, accentColor }) {
   return (
     <section className="py-32 px-6 sm:px-12 scroll-mt-20" id="experience">
       <div className="max-w-6xl mx-auto">
-        <h2 className={`${accentColor} text-lg font-sfmono mb-4`}>Experience</h2>
+        <h2 className={`${accentColor} text-lg font-sfmono mb-4`}>Experiences</h2>
 
         {experiences.map((exp, index) => {
           const Icon = exp.icon; // dynamic icon component
