@@ -79,11 +79,11 @@ export const experiences = [
     icon: FaTools,
   },
   {
-    title: "Frontend Developer",
+    title: "Fullstack Developer",
     company: "Freelance",
     duration: "2023 - 2025",
     description:
-      "Designed UI/UX and developed responsive front-end systems for capstone research projects.",
+      "Designed UI/UX and developed both front-end and back-end system for capstone research projects.",
     icon: FaCode,
   },
   {
