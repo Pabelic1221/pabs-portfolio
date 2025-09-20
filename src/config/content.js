@@ -71,7 +71,7 @@ export const awards = [
 // ✅ Experiences moved here
 export const experiences = [
   {
-    title: "IT Support Specialist",
+    title: "IT Technical Support Specialist",
     company: "Freelance",
     duration: "2020 - Present",
     description:
