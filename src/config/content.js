@@ -73,7 +73,7 @@ export const experiences = [
   {
     title: "IT Support Specialist",
     company: "Freelance",
-    duration: "2021 - 2024",
+    duration: "2020 - Present",
     description:
       "Provided technical support, troubleshooting, PC assembly, maintenance, and system reformatting for clients. Installed software including Microsoft Office tools, Windows OS, and other essential applications.",
     icon: FaTools,
