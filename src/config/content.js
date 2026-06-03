@@ -2,11 +2,12 @@ import award1Image from '../assets/Images/CCI_000088.jpg';
 import award2Image from '../assets/Images/CCI_000084.jpg';
 
 import { FaTools, FaCode, FaBug } from 'react-icons/fa';
+import { MdHealthAndSafety } from 'react-icons/md';
 
 export const aboutContent = {
-  introduction: "I’m Jushua, a tech professional with a strong passion for creating digital solutions. My journey started in 2017 with web development, and since then I’ve expanded my skills in IT support, development, and DevOps.",
-  experience: "I have worked as an IT Technical Support Specialist, providing technical solutions and ensuring smooth operations, and as a Web Developer, building responsive and user-friendly applications with modern frameworks.",
-  recentWork: "Recently, I completed an internship as a DevOps Engineer at Apollotech Software Corporation, where I gained hands-on experience with Kubernetes, Docker, and cloud-based deployment.",
+  introduction: "I'm Jushua, a tech professional with a strong passion for creating digital solutions. My journey started in 2017 with web development, and since then I've grown into a full-stack developer with hands-on experience in IT support, DevOps, and government health systems.",
+  experience: "I have worked as an IT Technical Support Specialist, a Fullstack Developer for capstone research projects, and a DevOps Intern at Apollotech Software Corporation — where I gained hands-on experience with Docker, Kubernetes, and cloud-based deployment workflows.",
+  recentWork: "Currently, I’m working as a Software Engineer at the City Health Insurance Department in Cagayan de Oro, building the City Health Information System (CHIS) for the Yakap Program under PhilHealth — a system designed to streamline health data management and improve access to healthcare services.",
   technologies: [
     'JavaScript',
     'MySQL',
@@ -70,6 +71,14 @@ export const awards = [
 
 // ✅ Experiences moved here
 export const experiences = [
+  {
+    title: "Software Engineer",
+    company: "City Health Insurance Department, Cagayan de Oro",
+    duration: "2025 - Present",
+    description:
+      "Currently developing the City Health Information System (CHIS) for the Yakap Program under PhilHealth. The system supports health data management and streamlines healthcare processes for the City Health Office, improving access to health services for Cagayan de Oro residents.",
+    icon: MdHealthAndSafety,
+  },
   {
     title: "IT Technical Support Specialist",
     company: "Freelance",
