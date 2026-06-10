@@ -11,9 +11,17 @@ function getGoogleViewerUrl(src) {
 // ─── Preview Modal ────────────────────────────────────────────────────────────
 function PreviewModal({ cert, onClose, isDarkMode }) {
   React.useEffect(() => {
-    const handler = (e) => { if (e.key === 'Escape') onClose(); };
+    const handler = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handler);
+    };
   }, [onClose]);
 
   return (
@@ -27,35 +35,51 @@ function PreviewModal({ cert, onClose, isDarkMode }) {
         onClick={onClose}
       >
         <motion.div
-          className={`relative rounded-lg overflow-hidden shadow-2xl w-full max-w-3xl flex flex-col ${
+          className={`relative rounded-lg overflow-hidden shadow-2xl flex flex-col ${
             isDarkMode ? 'bg-light-navy' : 'bg-white'
           }`}
-          style={{ maxHeight: '90vh' }}
+          style={{
+            maxWidth: '95vw',
+            maxHeight: '95vh',
+            width: cert.type === 'image' ? 'fit-content' : '95vw',
+            height: cert.type === 'image' ? 'fit-content' : '90vh',
+          }}
           initial={{ scale: 0.92, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.92, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header */}
-          <div className={`flex items-center justify-between px-5 py-4 border-b shrink-0 ${
-            isDarkMode ? 'border-navy' : 'border-gray-200'
-          }`}>
+          <div
+            className={`flex items-center justify-between px-5 py-4 border-b shrink-0 ${
+              isDarkMode ? 'border-navy' : 'border-gray-200'
+            }`}
+          >
             <div className="min-w-0 pr-4">
-              <h3 className={`font-sfmono font-semibold text-sm truncate ${
-                isDarkMode ? 'text-lightest-slate' : 'text-gray-900'
-              }`}>
+              <h3
+                className={`font-sfmono font-semibold text-sm truncate ${
+                  isDarkMode
+                    ? 'text-lightest-slate'
+                    : 'text-gray-900'
+                }`}
+              >
                 {cert.title}
               </h3>
-              <p className={`text-xs mt-0.5 font-sfmono ${
-                isDarkMode ? 'text-slate' : 'text-gray-500'
-              }`}>
+
+              <p
+                className={`text-xs mt-0.5 font-sfmono ${
+                  isDarkMode ? 'text-slate' : 'text-gray-500'
+                }`}
+              >
                 {cert.issuer} · {cert.date}
               </p>
             </div>
+
             <button
               onClick={onClose}
               className={`transition-colors ${
-                isDarkMode ? 'text-slate hover:text-lightest-slate' : 'text-gray-400 hover:text-gray-700'
+                isDarkMode
+                  ? 'text-slate hover:text-lightest-slate'
+                  : 'text-gray-400 hover:text-gray-700'
               }`}
               aria-label="Close preview"
             >
@@ -63,23 +87,27 @@ function PreviewModal({ cert, onClose, isDarkMode }) {
             </button>
           </div>
 
-          {/* Preview body */}
-          <div className="flex-1 w-full" style={{ height: '78vh' }}>
-            {cert.type === 'image' ? (
+          {cert.type === 'image' ? (
+            <div className="flex items-center justify-center p-4">
               <img
                 src={cert.src}
                 alt={cert.title}
-                className="w-full h-full object-contain"
+                className="max-w-[90vw] max-h-[85vh] w-auto h-auto object-contain"
               />
-            ) : (
+            </div>
+          ) : (
+            <div
+              className="w-full"
+              style={{ height: 'calc(90vh - 73px)' }}
+            >
               <iframe
                 src={getGoogleViewerUrl(cert.src)}
                 title={cert.title}
                 className="w-full h-full border-0"
                 allow="autoplay"
               />
-            )}
-          </div>
+            </div>
+          )}
         </motion.div>
       </motion.div>
     </AnimatePresence>
