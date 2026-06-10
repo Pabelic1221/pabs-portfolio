@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { FaCertificate, FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
+import { FaCertificate, FaExternalLinkAlt, FaTimes, FaFilePdf } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { certificates } from '../config/content';
+
+// Wraps a local PDF asset URL into Google Docs viewer for clean rendering
+function getGoogleViewerUrl(src) {
+  const absolute = `${window.location.origin}${src}`;
+  return `https://docs.google.com/viewer?url=${encodeURIComponent(absolute)}&embedded=true`;
+}
 
 // ─── Preview Modal ────────────────────────────────────────────────────────────
 function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
@@ -15,7 +21,7 @@ function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
     <AnimatePresence>
       <motion.div
         className="fixed inset-0 z-50 flex items-center justify-center p-4"
-        style={{ backgroundColor: 'rgba(0,0,0,0.80)' }}
+        style={{ backgroundColor: 'rgba(0,0,0,0.85)' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -25,7 +31,7 @@ function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
           className={`relative rounded-lg overflow-hidden shadow-2xl w-full max-w-3xl flex flex-col ${
             isDarkMode ? 'bg-light-navy' : 'bg-white'
           }`}
-          style={{ maxHeight: '88vh' }}
+          style={{ maxHeight: '90vh' }}
           initial={{ scale: 0.92, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.92, opacity: 0 }}
@@ -70,26 +76,42 @@ function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
           </div>
 
           {/* Preview body */}
-          <div className="flex-1 overflow-hidden" style={{ minHeight: 0 }}>
+          <div className="flex-1 w-full" style={{ height: '78vh' }}>
             {cert.type === 'image' ? (
               <img
                 src={cert.src}
                 alt={cert.title}
                 className="w-full h-full object-contain"
-                style={{ maxHeight: '75vh' }}
               />
             ) : (
+              // Google Docs viewer — renders PDF without browser native toolbar
               <iframe
-                src={cert.src}
+                src={getGoogleViewerUrl(cert.src)}
                 title={cert.title}
-                className="w-full border-0"
-                style={{ height: '75vh' }}
+                className="w-full h-full border-0"
+                allow="autoplay"
               />
             )}
           </div>
         </motion.div>
       </motion.div>
     </AnimatePresence>
+  );
+}
+
+// ─── PDF Thumbnail placeholder ────────────────────────────────────────────────
+function PdfThumbnail({ cert, isDarkMode, accentColor }) {
+  return (
+    <div className={`w-full h-36 rounded mb-4 flex flex-col items-center justify-center gap-2 ${
+      isDarkMode ? 'bg-navy' : 'bg-gray-100'
+    }`}>
+      <FaFilePdf className={`${accentColor} text-4xl`} />
+      <span className={`font-sfmono text-[10px] font-semibold uppercase tracking-widest ${
+        isDarkMode ? 'text-slate' : 'text-gray-400'
+      }`}>
+        PDF
+      </span>
+    </div>
   );
 }
 
@@ -108,23 +130,17 @@ function CertCard({ cert, isDarkMode, accentColor, hoverAccentColor, onPreview }
       onClick={() => onPreview(cert)}
     >
       {/* Thumbnail */}
-      <div className={`w-full h-36 rounded mb-4 overflow-hidden flex items-center justify-center ${
-        isDarkMode ? 'bg-navy' : 'bg-gray-100'
-      }`}>
-        {cert.type === 'image' ? (
+      {cert.type === 'image' ? (
+        <div className="w-full h-36 rounded mb-4 overflow-hidden">
           <img
             src={cert.src}
             alt={cert.title}
             className="w-full h-full object-cover"
           />
-        ) : (
-          <iframe
-            src={`${cert.src}#toolbar=0&navpanes=0&scrollbar=0`}
-            title={cert.title}
-            className="w-full h-full border-0 pointer-events-none"
-          />
-        )}
-      </div>
+        </div>
+      ) : (
+        <PdfThumbnail cert={cert} isDarkMode={isDarkMode} accentColor={accentColor} />
+      )}
 
       {/* Icon + Title + Link */}
       <div className="flex items-start justify-between gap-2">
