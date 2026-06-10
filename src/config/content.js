@@ -117,7 +117,7 @@ export const certificates = [
     title: 'Data Privacy Awareness Training',
     issuer: 'LGU Cagayan de Oro',
     date: 'Jun 2026  ·  8 Hours',
-    type: 'png',
+    type: 'image',
     src: dataPrivacyCert,
     tags: ['Participation', 'Training'],
   },
