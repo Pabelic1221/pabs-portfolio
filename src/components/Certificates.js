@@ -3,14 +3,13 @@ import { FaCertificate, FaExternalLinkAlt, FaTimes, FaFilePdf } from 'react-icon
 import { motion, AnimatePresence } from 'framer-motion';
 import { certificates } from '../config/content';
 
-// Wraps a local PDF asset URL into Google Docs viewer for clean rendering
 function getGoogleViewerUrl(src) {
   const absolute = `${window.location.origin}${src}`;
   return `https://docs.google.com/viewer?url=${encodeURIComponent(absolute)}&embedded=true`;
 }
 
 // ─── Preview Modal ────────────────────────────────────────────────────────────
-function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
+function PreviewModal({ cert, onClose, isDarkMode }) {
   React.useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', handler);
@@ -53,26 +52,15 @@ function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
                 {cert.issuer} · {cert.date}
               </p>
             </div>
-            <div className="flex items-center gap-4 shrink-0">
-              <a
-                href={cert.src}
-                download
-                className={`text-xs font-sfmono flex items-center gap-1 transition-colors ${
-                  isDarkMode ? 'text-green hover:text-green/80' : 'text-pink-400 hover:text-pink-500'
-                }`}
-              >
-                Download <FaExternalLinkAlt className="text-[10px]" />
-              </a>
-              <button
-                onClick={onClose}
-                className={`transition-colors ${
-                  isDarkMode ? 'text-slate hover:text-lightest-slate' : 'text-gray-400 hover:text-gray-700'
-                }`}
-                aria-label="Close preview"
-              >
-                <FaTimes />
-              </button>
-            </div>
+            <button
+              onClick={onClose}
+              className={`transition-colors ${
+                isDarkMode ? 'text-slate hover:text-lightest-slate' : 'text-gray-400 hover:text-gray-700'
+              }`}
+              aria-label="Close preview"
+            >
+              <FaTimes />
+            </button>
           </div>
 
           {/* Preview body */}
@@ -84,7 +72,6 @@ function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
                 className="w-full h-full object-contain"
               />
             ) : (
-              // Google Docs viewer — renders PDF without browser native toolbar
               <iframe
                 src={getGoogleViewerUrl(cert.src)}
                 title={cert.title}
@@ -100,7 +87,7 @@ function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
 }
 
 // ─── PDF Thumbnail placeholder ────────────────────────────────────────────────
-function PdfThumbnail({ cert, isDarkMode, accentColor }) {
+function PdfThumbnail({ isDarkMode, accentColor }) {
   return (
     <div className={`w-full h-36 rounded mb-4 flex flex-col items-center justify-center gap-2 ${
       isDarkMode ? 'bg-navy' : 'bg-gray-100'
@@ -139,10 +126,10 @@ function CertCard({ cert, isDarkMode, accentColor, hoverAccentColor, onPreview }
           />
         </div>
       ) : (
-        <PdfThumbnail cert={cert} isDarkMode={isDarkMode} accentColor={accentColor} />
+        <PdfThumbnail isDarkMode={isDarkMode} accentColor={accentColor} />
       )}
 
-      {/* Icon + Title + Link */}
+      {/* Icon + Title + Preview button */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <FaCertificate className={`${accentColor} text-lg shrink-0`} />
@@ -222,7 +209,6 @@ function Certificates({ isDarkMode, accentColor, hoverAccentColor }) {
           cert={previewCert}
           onClose={() => setPreviewCert(null)}
           isDarkMode={isDarkMode}
-          accentColor={accentColor}
         />
       )}
     </>
