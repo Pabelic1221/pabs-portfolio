@@ -105,8 +105,8 @@ export const certificates = [
   {
     id: 4,
     title: 'Udemy Certificate of Completion',
-    issuer: 'Udemy   · 5.5 Hours',
-    date: 'Jun 2026',
+    issuer: 'Udemy',
+    date: 'Jun 2026  ·  5.5 Hours',
     type: 'pdf',
     src: udemyCert,
     tags: ['Online Course'],
