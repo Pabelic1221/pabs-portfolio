@@ -97,7 +97,7 @@ export const certificates = [
     id: 3,
     title: 'Operating Systems Basics',
     issuer: 'Coursera',
-    date: 'Jun 2026   12 Hours',
+    date: 'Jun 2026  12 Hours',
     type: 'pdf',
     src: operatingSystems,
     tags: ['OS', 'Fundamentals'],
