@@ -1,13 +1,18 @@
 import award1Image from '../assets/Images/CCI_000088.jpg';
 import award2Image from '../assets/Images/CCI_000084.jpg';
 
+import introCip from '../assets/Images/introduction_to_cip.png';
+import roadshow from '../assets/Images/Jushua pabelic Roadshow Certificate of Participation.pdf';
+import operatingSystems from '../assets/Images/Operating_Systems_Basics_certificate_pabelicjush-gmail-com_9380fc60-6ba9-4a1e-a5dc-e3ac103bbf55 (1).pdf';
+import udemyCert from '../assets/Images/UC-9267a626-45c6-44a3-a862-43426f493da1.pdf';
+
 import { FaTools, FaCode, FaBug } from 'react-icons/fa';
 import { MdHealthAndSafety } from 'react-icons/md';
 
 export const aboutContent = {
   introduction: "I'm Jushua, a tech professional with a strong passion for creating digital solutions. My journey started in 2017 with web development, and since then I've grown into a full-stack developer with hands-on experience in IT support, DevOps, and government health systems.",
   experience: "I have worked as an IT Technical Support Specialist, a Fullstack Developer for capstone research projects, and a DevOps Intern at Apollotech Software Corporation — where I gained hands-on experience with Docker, Kubernetes, and cloud-based deployment workflows.",
-  recentWork: "Currently, I’m working as a Software Engineer at the City Health Insurance Department in Cagayan de Oro, building the City Health Information System (CHIS) for the Yakap Program under PhilHealth — a system designed to streamline health data management and improve access to healthcare services.",
+  recentWork: "Currently, I'm working as a Software Engineer at the City Health Insurance Department in Cagayan de Oro, building the City Health Information System (CHIS) for the Yakap Program under PhilHealth — a system designed to streamline health data management and improve access to healthcare services.",
   technologies: [
     'JavaScript',
     'MySQL',
@@ -21,7 +26,6 @@ export const aboutContent = {
     'Kubernetes',
     'Tailwind CSS',
     'Docker',
-    
   ]
 };
 
@@ -47,7 +51,7 @@ export const seoConfig = {
   siteUrl: 'https://your-portfolio-url.com'
 }; 
 
-// 🏆 Awards Content moved here
+// 🏆 Awards Content
 export const awards = [
   {
     title: 'Digital Solution Showcase',
@@ -69,7 +73,47 @@ export const awards = [
   },
 ];
 
-// ✅ Experiences moved here
+// 📜 Certificates Content
+export const certificates = [
+  {
+    id: 1,
+    title: 'Introduction to Critical Infrastructure Protection',
+    issuer: 'CISA',
+    date: 'Jun 2026',
+    type: 'image',
+    src: introCip,
+    tags: ['Cybersecurity', 'Infrastructure'],
+  },
+  {
+    id: 2,
+    title: 'Roadshow Certificate of Participation',
+    issuer: 'Synctactics',
+    date: 'Jan 2023',
+    type: 'pdf',
+    src: roadshow,
+    tags: ['Participation', 'Event'],
+  },
+  {
+    id: 3,
+    title: 'Operating Systems Basics',
+    issuer: 'Coursera',
+    date: 'Jun 2026',
+    type: 'pdf',
+    src: operatingSystems,
+    tags: ['OS', 'Fundamentals'],
+  },
+  {
+    id: 4,
+    title: 'Udemy Certificate of Completion',
+    issuer: 'Udemy',
+    date: 'Jun 2026',
+    type: 'pdf',
+    src: udemyCert,
+    tags: ['Online Course'],
+  },
+];
+
+// ✅ Experiences
 export const experiences = [
   {
     title: "Software Engineer",

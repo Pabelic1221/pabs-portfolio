@@ -12,6 +12,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 const About = lazy(() => import('./components/About'));
 const Projects = lazy(() => import('./components/Projects'));
 const AllProjects = lazy(() => import('./components/AllProjects'));
+const Certificates = lazy(() => import('./components/Certificates'));
 const Awards = lazy(() => import('./components/Awards'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -82,6 +83,7 @@ function App() {
                     <Experience {...commonProps} />
                     <Awards {...commonProps} />
                     <Projects {...commonProps} />
+                    <Certificates {...commonProps} />
                     <Contact {...commonProps} />
                     <Footer {...commonProps} />
                   </>
