@@ -5,6 +5,7 @@ import introCip from '../assets/Images/introduction_to_cip.png';
 import roadshow from '../assets/Images/Jushua pabelic Roadshow Certificate of Participation.pdf';
 import operatingSystems from '../assets/Images/Operating_Systems_Basics_certificate_pabelicjush-gmail-com_9380fc60-6ba9-4a1e-a5dc-e3ac103bbf55 (1).pdf';
 import udemyCert from '../assets/Images/UC-9267a626-45c6-44a3-a862-43426f493da1.pdf';
+import dataPrivacyCert from '../assets/Images/Data-Privacy-Awareness-Training-Pabelic.png';
 
 import { FaTools, FaCode, FaBug } from 'react-icons/fa';
 import { MdHealthAndSafety } from 'react-icons/md';
@@ -118,7 +119,7 @@ export const certificates = [
     date: 'Jun 2026  ·  8 Hours',
     type: 'png',
     src: dataPrivacyCert,
-    tags: ['Online Course'],
+    tags: ['Participation', 'Training'],
   },
 ];
 
