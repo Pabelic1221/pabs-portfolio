@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaCertificate, FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { certificates } from '../content';
+import { certificates } from '../config/content';
 
 // ─── Preview Modal ────────────────────────────────────────────────────────────
 function PreviewModal({ cert, onClose, isDarkMode, accentColor }) {
