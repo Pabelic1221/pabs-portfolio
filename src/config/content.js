@@ -111,6 +111,15 @@ export const certificates = [
     src: udemyCert,
     tags: ['Online Course'],
   },
+  {
+    id: 5,
+    title: 'Data Privacy Awareness Training',
+    issuer: 'LGU Cagayan de Oro',
+    date: 'Jun 2026  ·  8 Hours',
+    type: 'png',
+    src: dataPrivacyCert,
+    tags: ['Online Course'],
+  },
 ];
 
 // ✅ Experiences
